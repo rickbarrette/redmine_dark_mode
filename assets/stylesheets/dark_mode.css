@@ -1,0 +1,424 @@
+/* Redmine dark mode. html.dark-mode is set by the plugin's head script (the user's choice, or the device's
+   setting). Redmine 7 colours almost everything with Open Color variables, so most of the work is giving those
+   variables dark values; the rest fixes the few hard-coded colours.
+
+   Images are never touched: attachments, thumbnails and pictures in issues and wiki pages keep their colours. */
+
+html.dark-mode {
+  color-scheme: dark;
+}
+
+/* Dark palette: Gitea's dark theme colours (theme-gitea-dark.css) on Open Color's scales, where 0-2 are
+   backgrounds, 3-4 borders and 5-9 text. */
+html.dark-mode,
+html.dark-mode #top-menu .dropdown-content {
+  --oc-white: #1e1f20;
+  --oc-white-rgb: 30, 31, 32;
+  --oc-gray-0: #1b1c1e;
+  --oc-gray-1: #1f2124;
+  --oc-gray-2: #2c2e32;
+  --oc-gray-3: #35373c;
+  --oc-gray-4: #3f4248;
+  --oc-gray-5: #80858f;
+  --oc-gray-6: #969aa1;
+  --oc-gray-7: #aaadb4;
+  --oc-gray-8: #c0c2c7;
+  --oc-gray-9: #d2d4d8;
+  --oc-blue-0: #1b283a;
+  --oc-blue-1: #193450;
+  --oc-blue-2: #254f77;
+  --oc-blue-3: #2b5c8b;
+  --oc-blue-4: #31699f;
+  --oc-blue-5: #3876b3;
+  --oc-blue-6: #4183c4;
+  --oc-blue-7: #548fca;
+  --oc-blue-8: #7aa8d6;
+  --oc-blue-9: #8db5dc;
+  --oc-indigo-0: #18191b;
+  --oc-indigo-1: #2c2e32;
+  --oc-indigo-2: #35373c;
+  --oc-indigo-3: #2b5c8b;
+  --oc-indigo-4: #31699f;
+  --oc-indigo-5: #4183c4;
+  --oc-indigo-6: #4183c4;
+  --oc-indigo-7: #548fca;
+  --oc-indigo-8: #7aa8d6;
+  --oc-indigo-9: #8db5dc;
+  --oc-green-0: #1c3329;
+  --oc-green-1: #203224;
+  --oc-green-2: #225633;
+  --oc-green-3: #2d6a3e;
+  --oc-green-4: #3d7f4a;
+  --oc-green-5: #7a9e55;
+  --oc-green-6: #87ab63;
+  --oc-green-7: #3fb950;
+  --oc-green-8: #56c066;
+  --oc-green-9: #7ad08a;
+  --oc-red-0: #322226;
+  --oc-red-1: #301e1e;
+  --oc-red-2: #763232;
+  --oc-red-3: #8f3a3a;
+  --oc-red-4: #a84040;
+  --oc-red-5: #c23636;
+  --oc-red-6: #cc4848;
+  --oc-red-7: #d15a5a;
+  --oc-red-8: #f85149;
+  --oc-red-9: #ff7b72;
+  --oc-yellow-0: #26272a;
+  --oc-yellow-1: #342e1f;
+  --oc-yellow-2: #443a27;
+  --oc-yellow-3: #5f481a;
+  --oc-yellow-4: #9a740a;
+  --oc-yellow-5: #b88a03;
+  --oc-yellow-6: #cc9903;
+  --oc-yellow-7: #eaaf03;
+  --oc-yellow-8: #d29922;
+  --oc-yellow-9: #e3b341;
+  --oc-orange-0: #35261c;
+  --oc-orange-1: #45301f;
+  --oc-orange-2: #6b3d1c;
+  --oc-orange-3: #8a4a18;
+  --oc-orange-4: #a85212;
+  --oc-orange-5: #cc580c;
+  --oc-orange-6: #f38236;
+  --oc-orange-7: #f6a066;
+  --oc-orange-8: #f8b48a;
+  --oc-orange-9: #fac8a8;
+  --oc-grape-0: #2d2035;
+  --oc-grape-1: #3a2645;
+  --oc-grape-2: #523163;
+  --oc-grape-3: #6c3d84;
+  --oc-grape-4: #8a4aa8;
+  --oc-grape-5: #a742c9;
+  --oc-grape-6: #b259d0;
+  --oc-grape-7: #ba6ad5;
+  --oc-grape-8: #c98be0;
+  --oc-grape-9: #d9aceb;
+  --oc-cyan-0: #182c30;
+  --oc-cyan-1: #1b3a3f;
+  --oc-cyan-2: #1f5059;
+  --oc-cyan-3: #246873;
+  --oc-cyan-4: #2a808d;
+  --oc-cyan-5: #3098a6;
+  --oc-cyan-6: #3aa9b8;
+  --oc-cyan-7: #5cbac6;
+  --oc-cyan-8: #85cdd6;
+  --oc-cyan-9: #ade0e6;
+  --oc-violet-0: #2d2035;
+  --oc-violet-1: #3a2645;
+  --oc-violet-2: #523163;
+  --oc-violet-3: #6c3d84;
+  --oc-violet-4: #8a4aa8;
+  --oc-violet-5: #a742c9;
+  --oc-violet-6: #b259d0;
+  --oc-violet-7: #ba6ad5;
+  --oc-violet-8: #c98be0;
+  --oc-violet-9: #d9aceb;
+  --oc-pink-0: #322226;
+  --oc-pink-1: #301e1e;
+  --oc-pink-2: #763232;
+  --oc-pink-3: #8f3a3a;
+  --oc-pink-4: #a84040;
+  --oc-pink-5: #c23636;
+  --oc-pink-6: #cc4848;
+  --oc-pink-7: #d15a5a;
+  --oc-pink-8: #f85149;
+  --oc-pink-9: #ff7b72;
+  --oc-teal-0: #182c30;
+  --oc-teal-1: #1b3a3f;
+  --oc-teal-2: #1f5059;
+  --oc-teal-3: #246873;
+  --oc-teal-4: #2a808d;
+  --oc-teal-5: #3098a6;
+  --oc-teal-6: #3aa9b8;
+  --oc-teal-7: #5cbac6;
+  --oc-teal-8: #85cdd6;
+  --oc-teal-9: #ade0e6;
+  --oc-lime-0: #1c3329;
+  --oc-lime-1: #203224;
+  --oc-lime-2: #225633;
+  --oc-lime-3: #2d6a3e;
+  --oc-lime-4: #3d7f4a;
+  --oc-lime-5: #7a9e55;
+  --oc-lime-6: #87ab63;
+  --oc-lime-7: #3fb950;
+  --oc-lime-8: #56c066;
+  --oc-lime-9: #7ad08a;
+  --color-current-marker: #4183c4;
+  --color-top-menu-background: #18191b;
+  --color-header-background: #1b283a;
+}
+
+/* The header and top bar keep light text: their light colours are put back there */
+html.dark-mode #top-menu,
+html.dark-mode #header {
+  --oc-white: #ffffff;
+  --oc-white-rgb: 255, 255, 255;
+  --oc-gray-0: #f8f9fa;
+  --oc-gray-1: #f1f3f5;
+  --oc-gray-2: #e9ecef;
+}
+
+/* ...except their menus, panels and fields, which are dark like the page */
+html.dark-mode #top-menu .dropdown-content,
+html.dark-mode #header #main-menu,
+html.dark-mode #header .drdn-content,
+html.dark-mode #header .drdn-trigger,
+html.dark-mode #header input,
+html.dark-mode #header select {
+  --oc-white: #1e1f20;
+  --oc-white-rgb: 30, 31, 32;
+  --oc-gray-0: #1b1c1e;
+  --oc-gray-1: #1f2124;
+  --oc-gray-2: #2c2e32;
+}
+
+
+/* ------------------------------------------------------------------ Core Redmine */
+
+html.dark-mode body,
+html.dark-mode #wrapper {
+  background: var(--oc-white);
+}
+
+html.dark-mode .tooltip:hover {
+  color: var(--oc-gray-9);
+}
+
+/* Sticky issue title shown when scrolling down an issue (white in core) */
+html.dark-mode div#sticky-issue-header { background-color: var(--oc-white); color: var(--oc-gray-9); }
+
+/* Text formatting toolbar: its icons are dark drawings, so the buttons are inverted (interface icons only,
+   never pictures); the background and border are set so they come out as the dark ones after inverting */
+html.dark-mode .jstElements button {
+  filter: invert(1);
+  background-color: #e4e3e1;
+  border-color: #c0bdb7;
+  color: #2d2b27;
+}
+html.dark-mode .jstElements button:hover { background-color: #cac8c3; border-color: #a19d95; }
+html.dark-mode .jstElements .jstb_pre::before { color: #2d2b27; }
+
+/* jQuery UI: autocomplete lists, menus, dialogs and tooltips */
+html.dark-mode :is(.ui-widget-content, .ui-widget.ui-widget-content) { background: #191a1c; color: #d2d4d8; border-color: #3f4248; }
+html.dark-mode .ui-widget-content a { color: #d2d4d8; }
+html.dark-mode .ui-widget-header { background: #1b1c1e; color: #d2d4d8; border-color: #3f4248; }
+html.dark-mode :is(.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button) { background: #2c2e32; color: #d2d4d8; border-color: #3f4248; }
+html.dark-mode :is(.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-button:hover) { background: #35373c; color: #f8f8f8; border-color: #5e626a; }
+html.dark-mode :is(.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active) { background: #4183c4; border-color: #4183c4; color: #fff; }
+html.dark-mode .ui-menu .ui-state-active :is(.item-sku, .item-description, .qbo-item-option-meta) { color: #e3ecf7; }
+html.dark-mode :is(.ui-state-highlight, .ui-widget-content .ui-state-highlight) { background: #342e1f; color: #e3b341; border-color: #5f481a; }
+html.dark-mode :is(.ui-state-error, .ui-widget-content .ui-state-error) { background: #322226; color: #ff7b72; border-color: #763232; }
+html.dark-mode :is(.ui-tooltip, .ui-tooltip.ui-widget-content) { background: #2b2e33; color: #d2d4d8; border: 1px solid #3f4248; }
+html.dark-mode .item-description { color: #969aa1; }
+
+/* The dark mode toggle in the top bar */
+/* Kept beside the avatar, on one line, whatever the top bar's layout */
+.profile-menu:has(> .dark-mode-toggle) {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.dark-mode-toggle {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline-end: 6px;
+  padding: 4px 6px;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--oc-gray-1);
+  cursor: pointer;
+}
+.dark-mode-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* Issue boxes and other cards: Gitea's card colour instead of Redmine's pale yellow */
+html.dark-mode div.issue { background: #191a1c; border-color: #3f4248; }
+
+/* Messages: Gitea's warning, error and success colours (core uses its darkest pink for warning text) */
+html.dark-mode :is(div.flash.warning, .conflict, .nodata, .warning) { background-color: #342e1f; border-color: #5f481a; color: #e3b341; }
+html.dark-mode :is(div.flash.error, #errorExplanation) { background-color: #322226; border-color: #763232; color: #ff7b72; }
+html.dark-mode div.flash.notice { background-color: #1c3329; border-color: #225633; color: #3fb950; }
+
+/* Fields: Gitea's input colour, a little darker than the page */
+/* (:where keeps this weaker than plugins' own field styles, e.g. the estimate editor's borderless lines) */
+html.dark-mode :where(input, select, textarea):where(:not([type=checkbox], [type=radio], [type=submit], [type=button])) { background-color: #191a1c; }
+
+/* Code: a dark version of Rouge's colourful style */
+html.dark-mode .syntaxhl,
+html.dark-mode div.wiki pre .syntaxhl { background: #161718; color: #d2d4d8; }
+html.dark-mode .syntaxhl .hll { background-color: #3a3a24; }
+html.dark-mode .syntaxhl :is(.c, .c1, .cm, .cs, .ch, .cd) { color: #8b949e; }
+html.dark-mode .syntaxhl .cp { color: #d2a8ff; }
+html.dark-mode .syntaxhl .err { color: #ffa198; background-color: #5a1e1e; }
+html.dark-mode .syntaxhl :is(.k, .kc, .kd, .kn, .kp, .kr, .ow) { color: #7ee787; }
+html.dark-mode .syntaxhl .kt { color: #79c0ff; }
+html.dark-mode .syntaxhl .o { color: #d2d4d8; }
+html.dark-mode .syntaxhl :is(.s, .s1, .s2, .sb, .sc, .sd, .sh, .dl) { color: #a5d6ff; }
+html.dark-mode .syntaxhl :is(.se, .si, .sx) { color: #ffa657; }
+html.dark-mode .syntaxhl .sr { color: #7ee787; }
+html.dark-mode .syntaxhl .ss { color: #ffa657; }
+html.dark-mode .syntaxhl :is(.m, .mb, .mf, .mh, .mi, .mo, .il, .mx) { color: #79c0ff; }
+html.dark-mode .syntaxhl :is(.na, .nv, .vc, .vg, .vi, .vm) { color: #ffa657; }
+html.dark-mode .syntaxhl :is(.nb, .bp) { color: #79c0ff; }
+html.dark-mode .syntaxhl :is(.nc, .nn, .ne) { color: #f0b072; }
+html.dark-mode .syntaxhl :is(.nd, .ni, .nl) { color: #d2a8ff; }
+html.dark-mode .syntaxhl :is(.nf, .fm) { color: #d2a8ff; }
+html.dark-mode .syntaxhl :is(.no, .nt) { color: #7ee787; }
+html.dark-mode .syntaxhl .gd { color: #ffa198; background-color: #4a1f22; }
+html.dark-mode .syntaxhl .gi { color: #7ee787; background-color: #1d3b26; }
+html.dark-mode .syntaxhl :is(.gh, .gu) { color: #79c0ff; }
+
+/* Images keep their own colours: a transparent picture with dark lines still shows on the dark page */
+html.dark-mode :is(div.wiki, .attachments, div.thumbnails, .journal) img:not(.gravatar):not(.icon-svg) {
+  background-color: #fff;
+}
+
+/* The lightbox (redmine_lightbox) draws white captions and controls over its black backdrop: keep them light */
+html.dark-mode :is(.glightbox-container, .goverlay) {
+  --oc-white: #ffffff;
+  --oc-white-rgb: 255, 255, 255;
+}
+
+/* ------------------------------------------------------------------ Plugins
+   Colours they hard-code, in the same dark palette:
+     page #1e1f20, raised #191a1c / #2c2e32, borders #35373c / #3f4248, text #d2d4d8 / #c0c2c7, muted #969aa1 */
+
+/* redmine_qbo: estimate and invoice editor */
+html.dark-mode .qbo-estimate { --qbo-border: #3f4248; --qbo-muted: #969aa1; --qbo-bar: #111215; }
+html.dark-mode .qbo-estimate-sheet { background: #1e1f20; border-color: #35373c; }
+html.dark-mode .qbo-field :is(label, .qbo-label),
+html.dark-mode :is(.qbo-address, .qbo-estimate-amount-value, .qbo-estimate-totals th, .qbo-estimate-lines td.qbo-line-subtotal-label) { color: #c0c2c7; }
+html.dark-mode .qbo-field :is(input[type=text], input[type=date], textarea) { background: #191a1c; color: #d2d4d8; }
+html.dark-mode .qbo-field :is(input[readonly], input[disabled]) { background: #2c2e32; color: #c0c2c7; }
+html.dark-mode .qbo-estimate-lines th { border-bottom-color: #3f4248; }
+html.dark-mode .qbo-estimate-lines td { border-bottom-color: #35373c; }
+html.dark-mode .qbo-estimate-lines :is(input[type=text], textarea) { color: #d2d4d8; }
+html.dark-mode .qbo-estimate-lines :is(tr:hover, tr:focus-within) :is(input[type=text], textarea) { background: #191a1c; }
+html.dark-mode .qbo-line-subtotal td { background: #2c2e32; }
+html.dark-mode .qbo-line.qbo-line-unmatched .qbo-line-item-name { background: #322226 !important; }
+html.dark-mode .qbo-line.ui-sortable-helper { background: #191a1c; }
+html.dark-mode .qbo-line-placeholder td { background: #1c3329; }
+html.dark-mode .qbo-line-time .qbo-line-time-badge { background: #1b283a; color: #7aa8d6; }
+html.dark-mode .qbo-import-panel { background: #191a1c; border-color: #35373c; }
+html.dark-mode .qbo-import-table { background: #1e1f20; }
+html.dark-mode .qbo-import-table th { border-bottom-color: #3f4248; }
+html.dark-mode .qbo-import-table td { border-bottom-color: #35373c; }
+html.dark-mode .qbo-estimate-totals .qbo-estimate-total :is(th, td) { border-top-color: #3f4248; }
+html.dark-mode .qbo-estimate .qbo-button { background: #2c2e32; color: #d2d4d8; border-color: #5e626a; }
+html.dark-mode .qbo-estimate .qbo-button:hover { background: #35373c; }
+html.dark-mode .qbo-estimate .qbo-button-dark { background: transparent; color: #fff; border-color: #fff; }
+html.dark-mode .qbo-estimate .qbo-button-primary { background: var(--qbo-green); border-color: var(--qbo-green); color: #fff; }
+html.dark-mode .qbo-estimate .qbo-button-primary:hover { background: var(--qbo-green-dark); border-color: var(--qbo-green-dark); }
+
+/* redmine_qbo: the business report's charts read these (lighter grid lines and labels than Chart.js' own) */
+html.dark-mode { --qbo-chart-grid: rgba(255, 255, 255, 0.14); --qbo-chart-text: #aaadb4; }
+
+/* redmine_qbo: estimate and invoice status badges, and the report's cost badges */
+html.dark-mode :is(.qbo-estimate-status, .qbo-cpi) { background: #35373c; color: #c0c2c7; }
+html.dark-mode :is(.qbo-estimate-status-sent, .qbo-estimate-status-accepted, .qbo-invoice-status-paid, .qbo-cpi-good) { background: #1c3329; color: #3fb950; }
+html.dark-mode :is(.qbo-estimate-status-closed, .qbo-estimate-status-converted, .qbo-invoice-status-open) { background: #1b283a; color: #7aa8d6; }
+html.dark-mode :is(.qbo-estimate-status-rejected, .qbo-invoice-status-overdue, .qbo-cpi-poor) { background: #322226; color: #ff7b72; }
+html.dark-mode :is(.qbo-invoice-status-partial, .qbo-cpi-under) { background: #342e1f; color: #e3b341; }
+html.dark-mode .qbo-invoice-status-voided { background: #35373c; color: #969aa1; }
+html.dark-mode .qbo-report-range { color: #969aa1; }
+html.dark-mode table.qbo-report-months .hours-start { border-left-color: #3f4248; }
+html.dark-mode :is(table.qbo-report-months, table.qbo-payments) tfoot td { border-top-color: #3f4248; }
+html.dark-mode .qbo-sync-busy { color: #f6a066; }
+
+/* redmine_qbo_lineitems */
+html.dark-mode :is(.line-items-sheet, .line-items-table) { --li-border: #3f4248; --li-muted: #969aa1; --li-text: #c0c2c7; }
+html.dark-mode .line-items-sheet { background: #1e1f20; }
+html.dark-mode .line-items-editor th { border-bottom-color: #3f4248; }
+html.dark-mode .line-items-editor td { border-bottom-color: #35373c; }
+html.dark-mode .line-items-editor :is(input[type=text], input[type=number]) { color: #d2d4d8; }
+html.dark-mode .line-items-editor :is(tr:hover, tr:focus-within) input { background: #191a1c; }
+html.dark-mode .line-items-button { background: #2c2e32; color: #d2d4d8; border-color: #5e626a; }
+html.dark-mode .line-items-button:hover { background: #35373c; }
+html.dark-mode .line-items-totals :is(th, td) { border-top-color: #3f4248; }
+html.dark-mode .line-items-editor tr.billed td,
+html.dark-mode .line-items-editor tr.billed { background: #2c2e32; }
+html.dark-mode .line-item-billed-badge { background: #1c3329; color: #3fb950; }
+html.dark-mode .item-sku { color: #aaadb4; }
+@media screen and (max-width: 699px) {
+  html.dark-mode .line-items-editor :is(input[type=text], input[type=number]):not([disabled]) { background: #191a1c; }
+}
+
+/* redmine_qbo_calendar: appointment blocks and badges take their status colour, mixed into the dark page */
+html.dark-mode :is(.appointment-block, .appointment-block:hover, .appointment-block.open) {
+  background: color-mix(in srgb, var(--status-color, #1fc0ff) 18%, #1e1f20) !important;
+  border-color: color-mix(in srgb, var(--status-color, #1fc0ff) 45%, #1e1f20) !important;
+}
+html.dark-mode .appointment-block .appointment-divider { border-top-color: color-mix(in srgb, var(--status-color, #1fc0ff) 35%, #1e1f20) !important; }
+html.dark-mode :is(.appointment-block .tip, .appointment-block:hover .tip, .appointment-block.open .tip) {
+  background: #191a1c !important;
+  border-color: color-mix(in srgb, var(--status-color, #1fc0ff) 55%, #191a1c) !important;
+}
+html.dark-mode :is(.appointment-link, .appointment-detail) { color: #d2d4d8; }
+html.dark-mode .appointment-meta { color: #c0c2c7; }
+html.dark-mode .appointment-block .tip :is(.subtitle, table.attributes th, .description) { color: #aaadb4; }
+html.dark-mode .appointment-block .tip table.attributes td { color: #d2d4d8; }
+html.dark-mode .appointment-block .tip hr { border-top-color: #35373c; }
+html.dark-mode :is(.appointment-block.call-out, .appointment-block.call-out:hover, .appointment-block.call-out.open) {
+  background: repeating-linear-gradient(-45deg, #3a2022, #3a2022 6px, #47262a 6px, #47262a 12px) !important;
+  border-color: #e5554a !important;
+}
+html.dark-mode .appointment-block.call-out .appointment-bar { background-color: #e5554a !important; }
+html.dark-mode .appointment-block.call-out .appointment-divider { border-top-color: #6b2e30 !important; }
+html.dark-mode .appointment-block.call-out .tip { background: #191a1c !important; border-color: #e5554a !important; }
+html.dark-mode .appointment-block.call-out .appointment-call-out-label { color: #ff7b72; }
+html.dark-mode :is(.status-badge, .quick-status-btn, .status-key-badge) {
+  background-color: color-mix(in srgb, var(--status-color, #8d9096) 22%, #1e1f20) !important;
+  border-color: color-mix(in srgb, var(--status-color, #8d9096) 55%, #1e1f20) !important;
+  color: color-mix(in srgb, var(--status-color, #8d9096) 55%, #fff) !important;
+}
+html.dark-mode :is(.status-badge.status-call-out, .status-key-badge.status-call-out) {
+  background: repeating-linear-gradient(-45deg, #3a2022, #3a2022 4px, #47262a 4px, #47262a 8px) !important;
+  border-color: #e5554a !important;
+  color: #ff7b72 !important;
+}
+html.dark-mode :is(ul.cal li.nwday, ul.cal li.sunday, ul.cal li.saturday) { background-color: #1b1c1e; }
+html.dark-mode ul.cal li.calbody.week-end { background-color: #1b1c1e !important; }
+html.dark-mode .holiday-badge { background-color: #322226 !important; color: #ff7b72 !important; border-color: #5c2b2f !important; }
+html.dark-mode :is(.calendar-status-legend .legend-label, .calendar-filter-toolbar label, .weekly-hours-total, .hours-total) { color: #c0c2c7 !important; }
+html.dark-mode .abbr-day { color: #969aa1 !important; }
+html.dark-mode .calendar-badge { background: #191a1c; border-color: #3f4248; }
+html.dark-mode .calendar-badge .day { color: #d2d4d8; }
+html.dark-mode :is(.appointment-dates, .quick-action-label) { color: #aaadb4; }
+html.dark-mode .calendar-add-call-out:hover { color: #d2d4d8; }
+html.dark-mode table.appointment-statuses tr.appointment-status-move td { background: #342e1f; }
+html.dark-mode table.appointment-statuses .appointment-status-count { color: #969aa1; }
+@media screen and (max-width: 768px) {
+  html.dark-mode table.cal td { background: #1e1f20; border-color: #35373c !important; }
+}
+
+/* stopwatch: the issue's Start/Stop tracking links */
+html.dark-mode a.stopwatch_issue_timer[href$="/timer/stop"] { color: #f85149; }
+html.dark-mode a.stopwatch_issue_timer[href$="/timer/start"] { color: #3fb950; }
+@media (max-width: 899px) {
+  html.dark-mode a.stopwatch_issue_timer[href$="/timer/stop"] { background-color: #322226; border-color: #f85149; }
+  html.dark-mode a.stopwatch_issue_timer[href$="/timer/start"] { background-color: #1c3329; border-color: #3fb950; }
+}
+
+/* redmine_qbo_reminders */
+html.dark-mode :is(.appointment-reminder em, table.reminders-recent td.status em, table.reminders-recent .reminder-failed) { color: #ff7b72; }
+html.dark-mode table.reminders-recent .reminder-sent { color: #3fb950; }
+
+/* redmine_qbo_vehicles */
+html.dark-mode .estimate-vehicle-unmatched { color: #f6a066 !important; }
+
+/* redmine_easy_notes */
+html.dark-mode #easy-notes input.easy-notes-input { background-color: var(--oc-white); color: var(--oc-gray-9); }
+
+/* redmine_qbo_vehicles */
+html.dark-mode .label-sub { color: #969aa1; }
+
+/* redmine_issue_templates */
+html.dark-mode .box-white,
+html.dark-mode div.issue_template { background-color: #1e1f20; }
+html.dark-mode fieldset.issue { background-color: #191a1c; }
