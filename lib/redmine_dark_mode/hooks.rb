@@ -30,7 +30,7 @@ module RedmineDarkMode
             get mode() { return mode; },
             set: function (value) { mode = value; apply(); },
             loggedIn: #{User.current.logged?.to_json},
-            labels: #{{ dark: l(:label_dark_mode_switch_dark), light: l(:label_dark_mode_switch_light) }.to_json}
+            labels: #{{ dark: l(:label_dark_mode_switch_dark), light: l(:label_dark_mode_switch_light), ok: l(:button_dark_mode_ok), cancel: l(:button_cancel) }.to_json}
           };
           apply();
           if (media.addEventListener) media.addEventListener('change', apply);

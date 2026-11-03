@@ -12,11 +12,11 @@ module RedmineDarkMode
   # Keeps the user's dark mode choice with their other preferences (My account)
   module UserPreferencePatch
     def dark_mode
-      self[:dark_mode].presence || 'auto'
+      self[:dark_mode].presence || RedmineDarkMode::DEFAULT_MODE
     end
 
     def dark_mode=(value)
-      self[:dark_mode] = RedmineDarkMode::MODES.include?(value.to_s) ? value.to_s : 'auto'
+      self[:dark_mode] = RedmineDarkMode::MODES.include?(value.to_s) ? value.to_s : RedmineDarkMode::DEFAULT_MODE
     end
   end
 end

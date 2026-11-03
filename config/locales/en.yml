@@ -15,3 +15,4 @@ en:
   label_dark_mode_dark: "On (dark)"
   label_dark_mode_switch_dark: "Switch to dark mode"
   label_dark_mode_switch_light: "Switch to light mode"
+  button_dark_mode_ok: "OK"

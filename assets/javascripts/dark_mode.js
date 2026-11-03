@@ -53,3 +53,76 @@
     if (media.addEventListener) media.addEventListener('change', function () { render(button); });
   });
 })();
+
+// "Are you sure?" confirmations (data-confirm, through rails-ujs). The browser draws its own box in the device's
+// colours, so on a dark page it can flash up bright; while the page is dark, a dark dialog asks instead, and OK
+// carries on with the link, button or form. Light pages keep the browser's box.
+(function () {
+  if (!window.RedmineDarkMode || !window.HTMLDialogElement) return;
+
+  var nativeConfirm = window.Rails && Rails.confirm;
+  var approved = null;
+
+  function ask(message, onOk) {
+    var labels = window.RedmineDarkMode.labels;
+    var dialog = document.createElement('dialog');
+    dialog.className = 'dark-mode-confirm';
+    var text = document.createElement('p');
+    text.textContent = message;
+    var buttons = document.createElement('div');
+    buttons.className = 'dark-mode-confirm-buttons';
+    var cancel = document.createElement('button');
+    cancel.type = 'button';
+    cancel.textContent = labels.cancel;
+    var ok = document.createElement('button');
+    ok.type = 'button';
+    ok.className = 'dark-mode-confirm-ok';
+    ok.textContent = labels.ok;
+    buttons.append(cancel, ok);
+    dialog.append(text, buttons);
+    document.body.appendChild(dialog);
+
+    var confirmed = false;
+    cancel.addEventListener('click', function () { dialog.close(); });
+    ok.addEventListener('click', function () { confirmed = true; dialog.close(); });
+    // Clicking the dimmed page outside the dialog cancels, like Escape
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('close', function () {
+      dialog.remove();
+      if (confirmed) onOk();
+    });
+    dialog.showModal();
+    ok.focus();
+  }
+
+  // For other scripts: asks in the dark dialog on dark pages, or the browser's box on light ones, then runs onOk
+  window.RedmineDarkMode.confirm = function (message, onOk) {
+    if (document.documentElement.classList.contains('dark-mode')) {
+      ask(message, onOk);
+    } else if (window.confirm(message)) {
+      onOk();
+    }
+  };
+
+  if (!window.Rails) return;
+
+  Rails.confirm = function (message, element) {
+    if (!document.documentElement.classList.contains('dark-mode')) {
+      return nativeConfirm ? nativeConfirm(message, element) : window.confirm(message);
+    }
+    // The second pass, after OK: let it through
+    if (approved === element) {
+      approved = null;
+      return true;
+    }
+    ask(message, function () {
+      approved = element;
+      if (element.tagName === 'FORM') {
+        element.requestSubmit ? element.requestSubmit() : element.submit();
+      } else {
+        element.click();
+      }
+    });
+    return false;
+  };
+})();

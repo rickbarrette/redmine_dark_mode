@@ -9,8 +9,11 @@
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 module RedmineDarkMode
-  # A user's choice: follow the device (the default), or always light or dark
+  # A user's choice: follow the device, or always light or dark
   MODES = %w[auto light dark].freeze
+
+  # Until someone chooses, Redmine follows their device
+  DEFAULT_MODE = 'auto'
 
   def self.setup
     UserPreference.prepend(RedmineDarkMode::UserPreferencePatch)
@@ -20,9 +23,9 @@ module RedmineDarkMode
     RedmineDarkMode::Hooks
   end
 
-  # The mode for this user (anonymous users follow the device, or their browser's saved choice)
+  # The mode for this user: their choice, else the default (anonymous users: their browser's saved choice, else the default)
   def self.mode_for(user)
     mode = user&.logged? ? user.pref.dark_mode : nil
-    MODES.include?(mode) ? mode : 'auto'
+    MODES.include?(mode) ? mode : DEFAULT_MODE
   end
 end

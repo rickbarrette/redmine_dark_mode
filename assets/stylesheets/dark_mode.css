@@ -430,3 +430,40 @@ html.dark-mode .label-sub { color: #969aa1; }
 html.dark-mode .box-white,
 html.dark-mode div.issue_template { background-color: #1e1f20; }
 html.dark-mode fieldset.issue { background-color: #191a1c; }
+
+/* The dark "Are you sure?" dialog (dark_mode.js), in place of the browser's bright one */
+dialog.dark-mode-confirm {
+  min-width: 320px;
+  max-width: min(90vw, 480px);
+  padding: 0;
+  border: 1px solid #3f4248;
+  border-radius: 8px;
+  background: #1e1f20;
+  color: #d2d4d8;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
+}
+dialog.dark-mode-confirm::backdrop { background: rgba(0, 0, 0, 0.55); }
+dialog.dark-mode-confirm p { margin: 0; padding: 20px 20px 16px; white-space: pre-line; }
+.dark-mode-confirm-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid #3f4248;
+  background: #1b1c1e;
+  border-radius: 0 0 8px 8px;
+}
+.dark-mode-confirm-buttons button {
+  min-width: 80px;
+  padding: 6px 14px;
+  border: 1px solid #3f4248;
+  border-radius: 4px;
+  background: #2c2e32;
+  color: #d2d4d8;
+  font: inherit;
+  cursor: pointer;
+}
+.dark-mode-confirm-buttons button:hover { background: #35373c; }
+.dark-mode-confirm-buttons button.dark-mode-confirm-ok { background: #4183c4; border-color: #4183c4; color: #fff; }
+.dark-mode-confirm-buttons button.dark-mode-confirm-ok:hover { background: #548fca; border-color: #548fca; }
