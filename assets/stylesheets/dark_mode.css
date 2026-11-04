@@ -328,6 +328,8 @@ html.dark-mode .qbo-field :is(label, .qbo-label),
 html.dark-mode :is(.qbo-address, .qbo-estimate-amount-value, .qbo-estimate-totals th, .qbo-estimate-lines td.qbo-line-subtotal-label) { color: #c0c2c7; }
 html.dark-mode .qbo-field :is(input[type=text], input[type=date], textarea) { background: #191a1c; color: #d2d4d8; }
 html.dark-mode .qbo-field :is(input[readonly], input[disabled]) { background: #2c2e32; color: #c0c2c7; }
+/* Locked estimates/invoices: their disabled boxes keep readable text */
+html.dark-mode .qbo-estimate-sheet[disabled] :is(input, textarea, select) { color: #c0c2c7; -webkit-text-fill-color: #c0c2c7; }
 html.dark-mode .qbo-estimate-lines th { border-bottom-color: #3f4248; }
 html.dark-mode .qbo-estimate-lines td { border-bottom-color: #35373c; }
 html.dark-mode .qbo-estimate-lines :is(input[type=text], textarea) { color: #d2d4d8; }
