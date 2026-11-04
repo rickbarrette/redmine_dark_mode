@@ -12,7 +12,7 @@ Redmine::Plugin.register :redmine_dark_mode do
   name 'Redmine Dark Mode plugin'
   author 'Rick Barrette'
   description 'A dark mode for Redmine: follows the device by default, with a per-user choice and a toggle in the top menu'
-  version '2026.11.4'
+  version '2026.11.5'
   url 'https://github.com/rickbarrette/redmine_dark_mode'
   author_url 'https://barrettefabrication.com'
   requires_redmine version_or_higher: '7.0.0'
