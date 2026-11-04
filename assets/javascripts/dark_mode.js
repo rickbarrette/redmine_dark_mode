@@ -24,12 +24,15 @@
     });
   }
 
-  function render(button) {
+  // The top bar's icon button, and on phones a line in the slide-out menu (the top bar is hidden there)
+  function render(button, link) {
     var dm = window.RedmineDarkMode;
     var label = isDark() ? dm.labels.light : dm.labels.dark;
-    button.innerHTML = isDark() ? SUN : MOON;
+    var icon = isDark() ? SUN : MOON;
+    button.innerHTML = icon;
     button.title = label;
     button.setAttribute('aria-label', label);
+    if (link) link.innerHTML = icon + '<span>' + label + '</span>';
   }
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -39,18 +42,37 @@
     var button = document.createElement('button');
     button.type = 'button';
     button.className = 'dark-mode-toggle';
-    render(button);
-    button.addEventListener('click', function () {
+
+    var link = null;
+    var flyout = document.querySelector('.js-flyout-menu');
+    if (flyout) {
+      var list = document.createElement('ul');
+      list.className = 'dark-mode-flyout';
+      var item = document.createElement('li');
+      link = document.createElement('a');
+      link.href = '#';
+      link.className = 'dark-mode-flyout-toggle';
+      item.appendChild(link);
+      list.appendChild(item);
+      flyout.appendChild(list);
+    }
+
+    function toggle(e) {
+      e.preventDefault();
       var mode = isDark() ? 'light' : 'dark';
       window.RedmineDarkMode.set(mode);
-      render(button);
+      render(button, link);
       save(mode);
-    });
+    }
+
+    render(button, link);
+    button.addEventListener('click', toggle);
+    if (link) link.addEventListener('click', toggle);
     menu.insertBefore(button, menu.firstChild);
 
     // The device switching light/dark (Automatic) changes the icon too
     var media = window.matchMedia('(prefers-color-scheme: dark)');
-    if (media.addEventListener) media.addEventListener('change', function () { render(button); });
+    if (media.addEventListener) media.addEventListener('change', function () { render(button, link); });
   });
 })();
 

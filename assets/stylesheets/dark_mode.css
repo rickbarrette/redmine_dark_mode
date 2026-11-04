@@ -245,6 +245,27 @@ html.dark-mode .item-description { color: #969aa1; }
   color: #fff;
 }
 
+/* The phone slide-out menu's dark mode line, after the profile links */
+.flyout-menu ul.dark-mode-flyout { margin-top: 12px; }
+.flyout-menu .dark-mode-flyout-toggle { display: flex; align-items: center; gap: 8px; }
+.flyout-menu .dark-mode-flyout-toggle svg { flex: none; }
+
+/* Redmine's open slide-out menu is as tall as the page and the page can't scroll while it's open, so on a
+   phone its last lines (Sign out, this toggle) sat out of reach. Pinned to the screen, it scrolls by itself. */
+@media screen and (max-width: 899px) {
+  .flyout-is-active .flyout-menu {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-end: 0;
+    block-size: 100vh;
+    block-size: 100dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    z-index: 100;
+  }
+}
+
 /* Issue boxes and other cards: Gitea's card colour instead of Redmine's pale yellow */
 html.dark-mode div.issue { background: #191a1c; border-color: #3f4248; }
 
