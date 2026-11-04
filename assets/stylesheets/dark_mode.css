@@ -196,6 +196,9 @@ html.dark-mode .tooltip:hover {
 /* Sticky issue title shown when scrolling down an issue (white in core) */
 html.dark-mode div#sticky-issue-header { background-color: var(--oc-white); color: var(--oc-gray-9); }
 
+/* The box behind the tab scroll arrows, shown when tabs don't fit, e.g. Administration > Settings (white in core) */
+html.dark-mode div.tabs-buttons { background: var(--oc-white); }
+
 /* Text formatting toolbar: its icons are dark drawings, so the buttons are inverted (interface icons only,
    never pictures); the background and border are set so they come out as the dark ones after inverting */
 html.dark-mode .jstElements button {
