@@ -8,6 +8,13 @@ html.dark-mode {
   color-scheme: dark;
 }
 
+/* Light pages stay light even when the device is dark. The head's <meta name="color-scheme" content="light dark">
+   otherwise lets the browser draw its own controls (checkboxes, radio buttons, scrollbars) in the device's dark
+   style on a page the user set to Light. */
+html:not(.dark-mode) {
+  color-scheme: light;
+}
+
 /* Dark palette: Gitea's dark theme colours (theme-gitea-dark.css) on Open Color's scales, where 0-2 are
    backgrounds, 3-4 borders and 5-9 text. */
 html.dark-mode,
